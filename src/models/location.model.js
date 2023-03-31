@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const Location = sequelize.define("Location", {
+    const Location = sequelize.define("Locations", {
       Location_id: {
         type: Sequelize.INTEGER
       },
