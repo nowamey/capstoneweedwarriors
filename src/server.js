@@ -1,23 +1,43 @@
-import 'dotenv/config';
-import cors from 'cors';
-import express from 'express';
+import 'dotenv/config'
 
-import {v4 as uuidv4} from 'uuid';
+const express = require("express");
+const cors = require("cors");
 
+
+//db.sequelize.sync({ force: true }).then(() => {
+//  console.log("Drop and re-sync db.");
+//});
+
+var corsOptions = {
+  origin: "http://localhost:8081"
+};
 const app = express();
-//by default, parse data as json
+const db = require("./models");
+
+db.sequelize.sync()
+  .then(() => {
+    console.log("Synced db.");
+  })
+  .catch((err) => {
+    console.log("Failed to sync db: " + err.message);
+  });
+
+
+
+app.use(cors(corsOptions));
+// parse requests of content-type - application/json
 app.use(express.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
-
-const db = require("./app/models");
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
 });
 
-
-app.listen(process.env.PORT, () =>
-    console.log(`listening at http://localhost:${process.env.PORT}`),
-);
-
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
