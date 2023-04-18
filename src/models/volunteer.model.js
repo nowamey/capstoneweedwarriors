@@ -11,13 +11,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       },
     },{timestamps: false});
-    
-    Volunteer.associate = (models) => {
-      Volunteer.belongsTo(models.report,{
-        as:'reports',
-        foreignKey:'recorded_by'
-      })
-    }
-
     return Volunteer;
   };

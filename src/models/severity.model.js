@@ -5,8 +5,7 @@ module.exports = (sequelize, Sequelize) => {
         primaryKey: true
     },
     threat_level: {
-        type: Sequelize.ENUM,
-        values: ['low','moderate','high']
+        type: Sequelize.STRING,
     }
 },{timestamps: false});
     

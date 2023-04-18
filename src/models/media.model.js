@@ -8,13 +8,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       }
     },{timestamps: false});
-    
-    Media.associate = (models) => {
-      Media.belongsTo(models.Reports,{
-        as:'reports',
-        foreignKey:'associated_media'
-      })
-    }
-    console.log('ok')
     return Media;
   };

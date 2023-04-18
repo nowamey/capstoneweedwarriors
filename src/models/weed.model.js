@@ -16,13 +16,5 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING
       }
     },{timestamps: false});
-    
-    Weed.associate = (models) =>{
-      Weed.belongsTo(models.report,{
-        as:'reports',
-        foreignKey: 'catalog_number'
-      })
-    };
-
     return Weed;
   };
