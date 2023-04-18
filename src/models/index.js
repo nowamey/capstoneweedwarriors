@@ -19,9 +19,10 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 
-db.locations = require("./location.model.js")(sequelize,Sequelize);
-db.persons = require("./person.model.js")(sequelize,Sequelize);
-db.tickets = require("./tickets.model.js")(sequelize,Sequelize);
-db.weeds = require("./weeds.model.js")(sequelize,Sequelize);
+db.reports = require("./report.model.js")(sequelize,Sequelize);
+db.volunteers = require("./volunteer.model.js")(sequelize,Sequelize);
+db.tickets = require("./media.model.js")(sequelize,Sequelize);
+db.weeds = require("./weed.model.js")(sequelize,Sequelize);
+db.case_severity = require("./severity.model.js")(sequelize,Sequelize);
 
 module.exports = db;
